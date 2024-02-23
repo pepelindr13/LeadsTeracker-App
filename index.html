@@ -1,0 +1,179 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <link rel="stylesheet" href="style.css" />
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+      integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC"
+      crossorigin="anonymous"
+    />
+    <script
+      src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"
+      integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL"
+      crossorigin="anonymous"
+    ></script>
+  </head>
+
+  <style>
+    #box {
+      width: 40%;
+      text-align: center;
+      background-color: blueviolet;
+      margin: 100px auto;
+      height: 100px;
+      font-size: 40px;
+      display: flex;
+      align-items: center;
+      text-align: center;
+      cursor: pointer;
+    }
+  </style>
+  <body>
+    <!-- <div class="container w-50 mx-auto text-center bg-success text-light p-5">
+        <h1 class="text-warning mb-4">Blackjack</h1>
+        <h2 id="message-el" class="fst-italic mb-3">Want to play a round?</h2>
+        <h2 id="cards-el" class="fst-italic mb-3">Cards:</h2>
+        <h2 id="sum-el" class="fst-italic mb-5">Sum:</h2>
+        <div class="w-lg-25 w-sm-100 mx-auto">
+            <button style="display: block;" id="start-game" class="btn btn-lg btn-warning text-success w-100 w-lg-25 mx-auto"onclick="startGame()">START GAME</button>
+        </div>
+        <div class="w-lg-25 w-sm-100 mx-auto">
+            <button onclick="newCard()" id="new-card"  class="btn btn-lg btn-danger mt-3 w-100 mx-auto">New card</button>
+            <button onclick="playAgain()" id="play-again" style="display: none;" class="btn btn-lg btn-danger mt-3 w-100 mx-auto">Play Again</button>
+            <p class="my-2 fs-2" id="player-el"></p>
+        </div>
+    </div>
+
+<div id="greeting-el"></div>
+    <script>
+
+        let cards = []
+        let sum = 0
+        let hasBlackJack = false
+        let isAlive = false
+        let messageEl = document.getElementById("message-el")
+        message = ""
+        let sumEl = document.getElementById("sum-el") 
+        let cardsEl = document.getElementById("cards-el")
+        let playagain = document.getElementById("play-again")
+        // let roundsEl = document.getElementById("rounds") 
+        let startgame = document.getElementById("start-game")
+        let newcard = document.getElementById("new-card")
+        let player = {
+            name: "Per",
+            chips: 200
+        }
+
+
+        let playerEl =document.getElementById("player-el")
+        playerEl.innerHTML = player.name + ": $" + player.chips
+
+        function getRandomCard() {
+        let randomNumber =  Math.floor(Math.random() * 13) + 1           
+            if(randomNumber == 1){
+                return 11
+            }else if(randomNumber > 10){
+                return 10
+            }else{
+                return randomNumber
+            }
+        }
+
+        function startGame(){
+            isAlive = true
+            let firstCard = getRandomCard()
+            let secondCard = getRandomCard() 
+            cards.push(firstCard, secondCard)
+            sum = firstCard + secondCard
+            startgame.style.display = "none"
+            renderGame()
+        }
+
+          
+            function renderGame() {
+                cardsEl.textContent = "Cards: " + " " 
+                for(i = 0; i < cards.length; i++){
+                    cardsEl.textContent += cards[i] + " "
+                }
+                sumEl.textContent = "Sum: " + sum
+                if(sum <= 20){
+                    message = "Do you want to draw a new card?"
+
+                } else if (sum === 21){
+                    message = "You've got Blackjack!"
+                    hasBlackJack = true
+                    newcard.style.display = "none"
+                    playagain.style.display = "block"
+                }else{
+                    message = "You're out of the game!"
+                    isAlive = false
+                    playagain.style.display = "block"
+                    startgame.style.display = "none"
+                    newcard.style.display = "none"
+                    let updatedChips =  player.chips - 200
+                    playerEl.innerHTML = player.name + ": $" + updatedChips
+                }
+                messageEl.innerHTML = message
+                
+        }
+
+        function newCard(){
+            if(isAlive === true && hasBlackJack === false){
+                let card = getRandomCard()
+                 sum += card
+                 cards.push(card)
+                 renderGame()
+            }
+2
+        }
+
+        function playAgain(){
+            window.location.href = "index.html"
+        } -->
+
+    <div class="w-100 m-auto p-4">
+      <input
+        type="text"
+        id="input-el"
+        class="border border-2 border-success  w-100 mb-2 ps-3 py-3"
+      />
+      <button class="btn-lg btn-success " id="input-btn">SAVE INPUT</button>
+    </div>
+    <ol id="displayLeads" class="text-success ">
+
+    </ol>
+
+    <script>
+      let myLeads = [];
+      const inputEl = document.getElementById("input-el");
+      const inputBtn = document.getElementById("input-btn");
+
+      inputBtn.addEventListener("click", () => {
+        myLeads.push(inputEl.value)
+        inputEl.value = ""
+        renderLeads()
+      });
+
+
+      function renderLeads(){
+        let listItems = ""
+        for(i = 0; i < myLeads.length; i++){
+         listItems += `
+            <a style="color: green ;" href="${myLeads[i]}"target="_blank">
+                <li>${myLeads[i]}</li>
+            </a>
+            `
+      }
+         displayLeads.innerHTML = listItems
+      }
+
+
+  
+    </script>
+    <script src="script.js"></script>
+  </body>
+</html>
